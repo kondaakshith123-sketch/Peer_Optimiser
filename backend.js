@@ -12,12 +12,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-console.log('Connecting to MongoDB...');
-mongoose.connect(process.env.MONGO_URI.trim())
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log('MongoDB Connection Error:', err));
-
-app.get('/', (req, res) => res.send('API Running'));
 
 // Define Routes
 app.use('/api/auth', require('./routes/auth'));

@@ -126,7 +126,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         body: JSON.stringify(payload)
                     });
 
-                    const signupData = await signupRes.json();
+                    let signupData;
+                    const contentType = signupRes.headers.get("content-type");
+                    if (contentType && contentType.indexOf("application/json") !== -1) {
+                        signupData = await signupRes.json();
+                    } else {
+                        const text = await signupRes.text();
+                        throw new Error('Server returned non-JSON response: ' + text);
+                    }
 
                     if (!signupRes.ok) {
                         throw new Error(signupData.msg || 'Signup Failed');
