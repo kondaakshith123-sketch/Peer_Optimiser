@@ -29,8 +29,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden md:flex items-center space-x-1">
-                    <a href="student_dashboard.html"
-                        class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 flex items-center gap-2">
+                    <a href="student_dashboard.html" class="nav-link nav-link-inactive">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -38,8 +37,7 @@
                         </svg>
                         Home
                     </a>
-                    <a href="idle_peers.html"
-                        class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 flex items-center gap-2">
+                    <a href="idle_peers.html" class="nav-link nav-link-inactive">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -47,8 +45,7 @@
                         </svg>
                         Idle Peers
                     </a>
-                    <a href="student_profile.html"
-                        class="px-3 py-2 rounded-lg text-sm font-medium text-indigo-600 bg-indigo-50 flex items-center gap-2">
+                    <a href="student_profile.html" class="nav-link nav-link-active">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -81,8 +78,7 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Left Column: Primary Info -->
-            <div
-                class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm flex flex-col items-center text-center h-fit">
+            <div class="card flex flex-col items-center text-center h-fit">
                 <div id="profile-avatar"
                     class="w-32 h-32 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-4xl font-bold mb-6 border-4 border-indigo-50">
                     AJ
@@ -107,7 +103,7 @@
             <div class="lg:col-span-2 space-y-8">
 
                 <!-- Personal Details -->
-                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm">
+                <div class="card">
                     <h3 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
                         Personal Details
                     </h3>
@@ -153,7 +149,7 @@
                 </div>
 
                 <!-- Interests -->
-                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm">
+                <div class="card">
                     <div class="flex justify-between items-center mb-6">
                         <h3 class="text-lg font-bold text-slate-800">Interests</h3>
                         <button

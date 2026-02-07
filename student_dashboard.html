@@ -32,8 +32,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden md:flex items-center space-x-1">
-                    <a href="student_dashboard.html"
-                        class="px-3 py-2 rounded-lg text-sm font-medium text-indigo-600 bg-indigo-50 flex items-center gap-2">
+                    <a href="student_dashboard.html" class="nav-link nav-link-active">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -41,8 +40,7 @@
                         </svg>
                         Home
                     </a>
-                    <a href="idle_peers.html"
-                        class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 flex items-center gap-2">
+                    <a href="idle_peers.html" class="nav-link nav-link-inactive">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -50,8 +48,7 @@
                         </svg>
                         Idle Peers
                     </a>
-                    <a href="student_profile.html"
-                        class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 flex items-center gap-2">
+                    <a href="student_profile.html" class="nav-link nav-link-inactive">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -114,7 +111,7 @@
             </div>
 
             <!-- Peers Free Now Card -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col justify-between">
+            <div class="card flex flex-col justify-between">
                 <div class="flex justify-between items-start">
                     <div>
                         <div class="text-slate-500 text-sm font-medium mb-1">Peers Free Now</div>
@@ -153,7 +150,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
 
             <!-- Today's Schedule -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm h-full">
+            <div class="card h-full">
                 <div class="flex items-center gap-2 mb-6">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
@@ -165,9 +162,8 @@
 
                 <div class="space-y-4">
                     <!-- Schedule Item 1 -->
-                    <div class="flex items-center p-3 hover:bg-slate-50 rounded-xl transition-colors group">
-                        <div
-                            class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center mr-4 group-hover:scale-105 transition-transform">
+                    <div class="schedule-item group">
+                        <div class="schedule-icon-wrapper bg-indigo-50 text-indigo-600">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -199,9 +195,8 @@
                     </div>
 
                     <!-- Schedule Item 3 -->
-                    <div class="flex items-center p-3 hover:bg-slate-50 rounded-xl transition-colors group">
-                        <div
-                            class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center mr-4 group-hover:scale-105 transition-transform">
+                    <div class="schedule-item group">
+                        <div class="schedule-icon-wrapper bg-amber-50 text-amber-600">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -235,7 +230,7 @@
             </div>
 
             <!-- Interested Group Activities -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm h-full">
+            <div class="card h-full">
                 <div class="flex items-center gap-2 mb-6">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
