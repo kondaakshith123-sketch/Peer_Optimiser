@@ -17,16 +17,37 @@ function handleLogin(event) {
     }
 
     if (email && password) {
-        // In a real app, we would verify credentials here.
-        // For this prototype, we check if the user has registered locally or just allow access.
-        // We will just update the email in localStorage to ensure the session is "current".
-        localStorage.setItem('peerSync_userEmail', email); 
-        
-        // We don't overwrite other details (Name, etc.) because we expect them to be set 
-        // during registration. If they are missing, the dashboard might look empty, 
-        // but that's the limitation of a frontend-only prototype.
-        
-        window.location.href = 'student_dashboard.html';
+        // API Call
+        const API_URL = 'http://localhost:5000/api'; // Should be global constant ideally
+
+        async function loginUser() {
+            try {
+                const res = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(data.msg || 'Login Failed');
+                }
+
+                // Save Token
+                localStorage.setItem('token', data.token);
+
+                // Redirect
+                window.location.href = 'student_dashboard.html';
+
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        loginUser();
     } else {
         alert('Please fill in all fields');
     }
