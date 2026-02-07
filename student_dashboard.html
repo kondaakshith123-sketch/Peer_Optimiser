@@ -7,21 +7,7 @@
     <title>Dashboard | PeerSync</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Hide scrollbar for horizontal scrolling areas */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="bg-gray-50 min-h-screen">
@@ -42,21 +28,7 @@
                     </div>
                 </div>
 
-                <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                        const userName = localStorage.getItem('peerSync_userName');
-                        if (userName) {
-                            const nameElement = document.getElementById('user-name-display');
-                            if (nameElement) {
-                                nameElement.textContent = userName;
-                            }
-                            const avatarElement = document.getElementById('user-avatar-display');
-                            if (avatarElement) {
-                                avatarElement.textContent = userName.charAt(0).toUpperCase();
-                            }
-                        }
-                    });
-                </script>
+                <script src="js/dashboard.js"></script>
 
                 <!-- Navigation Links -->
                 <div class="hidden md:flex items-center space-x-1">
