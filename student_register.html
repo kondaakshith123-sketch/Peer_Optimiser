@@ -139,10 +139,18 @@
                     </div>
 
                     <div>
-                        <label for="reg_password" class="form-label">Set Password
-                            <span class="text-red-500">*</span></label>
+                        <label for="reg_password" class="form-label">Set Password <span
+                                class="text-red-500">*</span></label>
                         <input type="password" id="reg_password" name="reg_password" class="form-input pb-2 pt-2"
                             required>
+                    </div>
+
+                    <div>
+                        <label for="reg_confirm_password" class="form-label">Confirm Password <span
+                                class="text-red-500">*</span></label>
+                        <input type="password" id="reg_confirm_password" name="reg_confirm_password"
+                            class="form-input pb-2 pt-2" required>
+                        <p id="password_error" class="text-red-500 text-xs mt-1 hidden"></p>
                     </div>
 
                     <div class="pt-4">

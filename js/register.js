@@ -95,39 +95,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Actually, I will update the JS to look for a password field, 
             // and I will update the HTML in the next step to add it.
-            const password = document.getElementById('reg_password') ? document.getElementById('reg_password').value : id;
+            const password = document.getElementById('reg_password').value;
+            const confirmPassword = document.getElementById('reg_confirm_password').value;
+            const passwordError = document.getElementById('password_error');
+
+            // Reset Password Error
+            passwordError.classList.add('hidden');
+            document.getElementById('reg_confirm_password').classList.remove('border-red-500');
+
+            if (password !== confirmPassword) {
+                passwordError.textContent = "Passwords do not match.";
+                passwordError.classList.remove('hidden');
+                document.getElementById('reg_confirm_password').classList.add('border-red-500');
+                return;
+            }
 
             const payload = {
                 name,
                 email,
-                password,
-                // We also need to create the profile details
+                password
             };
-
-            // Signup only creates User and empty Profile. 
-            // We need to UPDATE the profile with the specific details (batch, branch, etc.)
-            // So the flow is: Signup -> Login (Get Token) -> Update Profile.
-
-            // This is getting complex for a simple replacement.
-            // Let's stick to the plan:
-            // 1. Signup with Name/Email/Password.
-            // 2. Alert success.
-            // 3. User logs in.
-            // 4. User updates profile?
-
-            // Better approach for Hackathon/Prototype:
-            // Send everything to a modified Signup API? 
-            // Or just do Signup then Profile Update immediately?
-
-            // I'll do: Signup -> Login (auto) -> Update Profile -> Redirect.
 
             async function registerUser() {
                 try {
+                    console.log('Attempting Signup...');
                     // 1. Signup
                     const signupRes = await fetch(`${API_URL}/auth/signup`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ name, email, password })
+                        body: JSON.stringify(payload)
                     });
 
                     const signupData = await signupRes.json();
@@ -136,9 +132,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         throw new Error(signupData.msg || 'Signup Failed');
                     }
 
+                    console.log('Signup Successful, Token received.');
                     const token = signupData.token;
 
                     // 2. Update Profile with extra details
+                    console.log('Updating Profile...');
                     const profileRes = await fetch(`${API_URL}/profile/update`, {
                         method: 'PUT',
                         headers: {
@@ -149,24 +147,30 @@ document.addEventListener('DOMContentLoaded', function () {
                             fullName: name,
                             rollNo: id,
                             year,
-                            branch: dept, // simple mapping
+                            branch: dept,
                             skills: interests
                         })
                     });
 
                     if (!profileRes.ok) {
-                        console.error('Profile update failed');
+                        console.error('Profile update failed', await profileRes.text());
+                        // We don't block registration success if profile update fails, but good to know
+                    } else {
+                        console.log('Profile Updated.');
                     }
 
                     alert('Registration Successful! Redirecting to Login...');
                     window.location.href = 'student_login.html';
 
                 } catch (err) {
-                    alert(err.message);
+                    console.error('Registration Error:', err);
+                    alert(`Registration Failed: ${err.message}. Ensure backend is running.`);
                     emailError.textContent = err.message;
                     emailError.classList.remove('hidden');
                 }
             }
+
+            registerUser();
 
             registerUser();
         });
