@@ -23,13 +23,30 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center gap-2">
-                        <div
+                        <div id="user-avatar-display"
                             class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
                             P
                         </div>
-                        <span class="font-bold text-xl text-slate-800 tracking-tight">PeerSync</span>
+                        <span id="user-name-display"
+                            class="font-bold text-xl text-slate-800 tracking-tight">PeerSync</span>
                     </div>
                 </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const userName = localStorage.getItem('peerSync_userName');
+                        if (userName) {
+                            const nameElement = document.getElementById('user-name-display');
+                            if (nameElement) {
+                                nameElement.textContent = userName;
+                            }
+                            const avatarElement = document.getElementById('user-avatar-display');
+                            if (avatarElement) {
+                                avatarElement.textContent = userName.charAt(0).toUpperCase();
+                            }
+                        }
+                    });
+                </script>
 
                 <!-- Navigation Links -->
                 <div class="hidden md:flex items-center space-x-1">
